@@ -10,7 +10,7 @@ var data = [
         "https://rukminim1.flixcart.com/image/832/832/jao8uq80/shoe/3/r/q/sm323-9-sparx-white-original-imaezvxwmp6qz6tg.jpeg?q=70"
   },
   {
-    "name": "Brasher Traveller",
+    "name": "Brasher Traveller1111",
     "price": 200.0,
     "fav": false,
     "rating": 4.5,

@@ -4,6 +4,7 @@ import 'package:ShoppingApp/widgets/CustomButton.dart';
 import 'package:ShoppingApp/widgets/DotWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 
 class ItemDetailPage extends StatefulWidget {
   final int itemId;
@@ -28,10 +29,10 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
 
   Widget buildDot(int index, int num) {
     return Padding(
-      padding: EdgeInsets.all(5.0),
+      padding: EdgeInsets.all(1.h),
       child: Container(
-        height: 10.0,
-        width: 10.0,
+        height: 2.h,
+        width: 2.h,
         decoration: BoxDecoration(
             color: (num == index) ? Colors.black38 : Colors.grey[200],
             shape: BoxShape.circle),
@@ -62,12 +63,12 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
               children: <Widget>[
                 Container(
                   height: 280.0,
-                  padding: EdgeInsets.only(top: 10.0),
+                  padding: EdgeInsets.only(top: 2.h),
                   color: Colors.white,
                   child: Column(
                     children: <Widget>[
                       Container(
-                        height: 200.0,
+                        height: 20.h,
                         child: PageView(
                           controller: pageController,
                           onPageChanged: (index) {
@@ -79,25 +80,25 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                           children: <Widget>[
                             Image.network(
                               model.image,
-                              height: 150.0,
+                              height: 15.h,
                             ),
                             Image.network(
                               model.image,
-                              height: 150.0,
+                              height: 15.h,
                             ),
                             Image.network(
                               model.image,
-                              height: 150.0,
+                              height: 15.h,
                             ),
                             Image.network(
                               model.image,
-                              height: 150.0,
+                              height: 15.h,
                             )
                           ],
                         ),
                       ),
                       SizedBox(
-                        height: 10.0,
+                        height: 2.h,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -125,7 +126,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                 ),
                 GetBuilder<HomePageController>(builder: (value) {
                   return Container(
-                      height: 270.0,
+                      height: 27.h,
                       alignment: Alignment(1.0, 1.0),
                       child: Padding(
                         padding: EdgeInsets.only(right: 15.0),
@@ -149,12 +150,12 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                               child: model.fav
                                   ? Icon(
                                       Icons.favorite,
-                                      size: 20.0,
+                                      size: 3.h,
                                       color: Colors.red,
                                     )
                                   : Icon(
                                       Icons.favorite_border,
-                                      size: 20.0,
+                                      size: 3.h,
                                     ),
                             )
                           ],
@@ -168,7 +169,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
               height: 1.0,
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
+              padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 4.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -178,7 +179,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                         TextStyle(fontWeight: FontWeight.w500, fontSize: 19.0),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 10.0),
+                    padding: EdgeInsets.only(top: 2.h),
                     child: Text(
                         "Flutter: Bubble tab indicator for TabBar. Using a Stack Widget and then adding elements to stack on different levels(stacking components like Tabs, above"),
                   )
@@ -189,8 +190,8 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
         ),
       ),
       bottomNavigationBar: Container(
-          margin: EdgeInsets.only(bottom: 18.0),
-          height: 60.0,
+          margin: EdgeInsets.only(bottom: 3.h),
+          height: 12.h,
           decoration: BoxDecoration(
               color: Colors.white,
               border: Border(
@@ -202,7 +203,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                 child: Row(
                   children: <Widget>[
                     Container(
-                      width: 60.0,
+                      width: 12.h,
                       child: Text(
                         "Total Amount",
                         style: TextStyle(fontSize: 12.0, color: Colors.grey),

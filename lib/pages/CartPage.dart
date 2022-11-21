@@ -2,11 +2,12 @@ import 'package:ShoppingApp/controller/homePageController.dart';
 import 'package:ShoppingApp/models/ItemModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 
 class CartPage extends StatelessWidget {
   Widget generateCart(BuildContext context, ShopItemModel d) {
     return Padding(
-      padding: EdgeInsets.all(5.0),
+      padding: EdgeInsets.all(1.h),
       child: Container(
         decoration: BoxDecoration(
             color: Colors.white12,
@@ -14,26 +15,27 @@ class CartPage extends StatelessWidget {
               bottom: BorderSide(color: Colors.grey.shade100, width: 1.0),
               top: BorderSide(color: Colors.grey.shade100, width: 1.0),
             )),
-        height: 100.0,
+        height: 15.h,
         child: Row(
           children: <Widget>[
-            Container(
-              alignment: Alignment.topLeft,
-              height: 100.0,
-              width: 100.0,
-              decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(color: Colors.black12, blurRadius: 5.0)
-                  ],
-                  borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(10.0),
-                      bottomRight: Radius.circular(10.0)),
-                  image: DecorationImage(
-                      image: NetworkImage(d.image), fit: BoxFit.fitHeight)),
+            Padding(
+              padding: EdgeInsets.all(1.h),
+              child: Container(
+                alignment: Alignment.topLeft,
+                height: 15.h,
+                width: 15.h,
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(color: Colors.black12, blurRadius: 1.h)
+                    ],
+                    borderRadius: BorderRadius.circular(2.h),
+                    image: DecorationImage(
+                        image: NetworkImage(d.image), fit: BoxFit.fitHeight)),
+              ),
             ),
             Expanded(
                 child: Padding(
-              padding: EdgeInsets.only(top: 10.0, left: 15.0),
+              padding: EdgeInsets.only(top: 2.h, left: 3.h),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -57,7 +59,7 @@ class CartPage extends StatelessWidget {
                                     "Item removed from cart successfully")));
                           },
                           child: Padding(
-                            padding: EdgeInsets.only(right: 10.0),
+                            padding: EdgeInsets.only(right: 2.h),
                             child: Icon(
                               Icons.remove_circle,
                               color: Colors.red,
@@ -68,7 +70,7 @@ class CartPage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    height: 5.0,
+                    height: 1.h,
                   ),
                   Text("Price ${d.price.toString()}"),
                 ],

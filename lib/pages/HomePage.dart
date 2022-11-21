@@ -5,6 +5,7 @@ import 'package:ShoppingApp/pages/ItemDetail.dart';
 import 'package:ShoppingApp/services/itemService.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -29,7 +30,7 @@ class _HomePageState extends State<HomePage> {
           elevation: 0.0,
           actions: <Widget>[
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.symmetric(horizontal: 2.h),
               child: InkResponse(
                   onTap: () {
                     Navigator.push(context,
@@ -73,7 +74,7 @@ class ShopItemListing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(2.h),
       child: GridView.builder(
         shrinkWrap: true,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -97,7 +98,7 @@ class ItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(5.0),
+      padding: EdgeInsets.all(1.h),
       child: InkResponse(
           onTap: () {
             Navigator.push(
@@ -108,20 +109,20 @@ class ItemView extends StatelessWidget {
           child: Material(
             child: Container(
                 height: 380.0,
-                padding: EdgeInsets.all(5.0),
+                padding: EdgeInsets.all(1.h),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     shape: BoxShape.rectangle,
                     boxShadow: [
-                      BoxShadow(color: Colors.black12, blurRadius: 8.0)
+                      BoxShadow(color: Colors.black12, blurRadius: 1.h)
                     ]),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Container(
-                      height: 120.0,
+                      height: 15.h,
                       child: Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: EdgeInsets.all(1.h),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -137,23 +138,20 @@ class ItemView extends StatelessWidget {
                               child: item.fav
                                   ? Icon(
                                       Icons.favorite,
-                                      size: 20.0,
+                                      size: 2.h,
                                       color: Colors.red,
                                     )
                                   : Icon(
                                       Icons.favorite_border,
-                                      size: 20.0,
+                                      size: 2.h,
                                     ),
                             )
                           ],
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
                     Padding(
-                      padding: EdgeInsets.only(left: 10.0),
+                      padding: EdgeInsets.only(left: 2.h),
                       child: Text(
                         "${item.name}",
                         style: TextStyle(
@@ -165,12 +163,12 @@ class ItemView extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(left: 10.0),
+                      padding: EdgeInsets.only(left: 2.h),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Padding(
-                            padding: EdgeInsets.only(right: 10.0),
+                            padding: EdgeInsets.only(right: 2.h),
                             child: Text(
                               "\$${item.price.toString()}",
                               style: TextStyle(fontWeight: FontWeight.w500),
