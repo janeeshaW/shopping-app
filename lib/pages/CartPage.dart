@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
+import '../utilities/stringValues.dart';
+
 class CartPage extends StatelessWidget {
   Widget generateCart(BuildContext context, ShopItemModel d) {
     return Padding(
@@ -56,7 +58,7 @@ class CartPage extends StatelessWidget {
                                 .removeFromCart(d.shopId ?? 0);
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                                 content: Text(
-                                    "Item removed from cart successfully")));
+                                    StringValues.notification_item_remove)));
                           },
                           child: Padding(
                             padding: EdgeInsets.only(right: 2.h),
@@ -72,7 +74,7 @@ class CartPage extends StatelessWidget {
                   SizedBox(
                     height: 1.h,
                   ),
-                  Text("Price ${d.price.toString()}"),
+                  Text(StringValues.item_price + d.price.toString()),
                 ],
               ),
             ))
@@ -92,11 +94,9 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<HomePageController>();
-
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cart list"),
+        title: Text(StringValues.title_cart_list),
       ),
       body: Column(
         children: [
@@ -106,7 +106,10 @@ class CartPage extends StatelessWidget {
                 builder: (_) {
                   if (controller.cartItems.length == 0) {
                     return Center(
-                      child: Text("No item found"),
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 30.h),
+                        child: Text(StringValues.text_no_item_found),
+                      ),
                     );
                   }
                   return ListView(
@@ -133,7 +136,7 @@ class CartPage extends StatelessWidget {
                   builder: (_) {
                     return RichText(
                       text: TextSpan(
-                          text: "Total  ",
+                          text: StringValues.text_no_item_found,
                           style: TextStyle(color: Colors.black, fontSize: 18),
                           children: <TextSpan>[
                             TextSpan(
@@ -156,7 +159,7 @@ class CartPage extends StatelessWidget {
                     alignment: Alignment.center,
                     height: 40,
                     width: 100,
-                    child: Text("Checkout", style: TextStyle(fontSize: 18),),
+                    child: Text(StringValues.text_checkout, style: TextStyle(fontSize: 18),),
                   )
                 ),
               )

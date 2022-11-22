@@ -1,5 +1,6 @@
 import 'package:ShoppingApp/controller/homePageController.dart';
 import 'package:ShoppingApp/models/ItemModel.dart';
+import 'package:ShoppingApp/utilities/stringValues.dart';
 import 'package:ShoppingApp/widgets/CustomButton.dart';
 import 'package:ShoppingApp/widgets/DotWidget.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +19,6 @@ class ItemDetailPage extends StatefulWidget {
 class _ItemDetailPageState extends State<ItemDetailPage> {
   late PageController pageController;
   int active = 0;
-  String image =
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc_R7jxbs8Mk2wjW9bG6H9JDbyEU_hRHmjhr3EYn-DYA99YU6zIw";
 
   @override
   void initState() {
@@ -140,9 +139,9 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                                 controller.setToFav(model.id, !model.fav);
                                 var msg = "";
                                 if (model.fav) {
-                                  msg = "${model.name} marked as favourite";
+                                  msg = model.name + StringValues.notification_favourite_added;
                                 } else {
-                                  msg = "${model.name} removed from favourite";
+                                  msg = model.name + StringValues.notification_favourite_removed;
                                 }
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(SnackBar(content: Text(msg)));
@@ -181,7 +180,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                   Padding(
                     padding: EdgeInsets.only(top: 2.h),
                     child: Text(
-                        "Flutter: Bubble tab indicator for TabBar. Using a Stack Widget and then adding elements to stack on different levels(stacking components like Tabs, above"),
+                        StringValues.item_dummy_description),
                   )
                 ],
               ),
@@ -205,7 +204,7 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                     Container(
                       width: 12.h,
                       child: Text(
-                        "Total Amount",
+                        StringValues.total_amount,
                         style: TextStyle(fontSize: 12.0, color: Colors.grey),
                       ),
                     ),
@@ -219,12 +218,12 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                 bool isAdded = controller.isAlreadyInCart(model.id);
                 if (isAdded) {
                   return CustomButton(
-                    name: "REMOVE CART",
+                    name: StringValues.text_remove_cart,
                     onTap: () async {
                       try {
                         controller.removeFromCart(model.id);
                         ScaffoldMessenger.of(context)
-                            .showSnackBar(SnackBar(content: Text("Item removed from cart successfully")));
+                            .showSnackBar(SnackBar(content: Text(StringValues.notification_remove_success)));
                       } catch (e) {
                         print(e);
                       }
@@ -232,13 +231,13 @@ class _ItemDetailPageState extends State<ItemDetailPage> {
                   );
                 }
                 return CustomButton(
-                  name: "ADD TO CART",
+                  name: StringValues.text_add_to_cart,
                   onTap: controller.isLoading ? null : ()  async {
                     try {
                       var result = await controller.addToCart(model);
                       controller.getCardList();
                       ScaffoldMessenger.of(context)
-                          .showSnackBar(SnackBar(content: Text("Item added in cart successfully")));
+                          .showSnackBar(SnackBar(content: Text(StringValues.notification_added_success)));
                     } catch (e) {
                       print(e);
                     }

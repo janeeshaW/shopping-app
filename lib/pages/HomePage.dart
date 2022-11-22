@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
+import '../utilities/stringValues.dart';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -15,7 +17,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   ItemServices itemServices = ItemServices();
   List<ShopItemModel> items = [];
-  final HomePageController controller = Get.put(HomePageController());
+  final HomePageController serviceLocator = Get.put(HomePageController());
 
   @override
   void initState() {
@@ -26,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Home"),
+          title: Text(StringValues.title_home),
           elevation: 0.0,
           actions: <Widget>[
             Padding(
@@ -39,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                   child: Stack(
                     children: [
                       GetBuilder<HomePageController>(builder: (_) => Align(
-                        child: Text(controller.cartItems.length > 0 ? controller.cartItems.length.toString() : ''),
+                        child: Text(serviceLocator.cartItems.length > 0 ? serviceLocator.cartItems.length.toString() : ''),
                         alignment: Alignment.topLeft,
                       )),
                       Align(
@@ -53,13 +55,13 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Container(
           child: GetBuilder<HomePageController>(
-            init: controller,
-            builder: (_) => controller.isLoading
+            init: serviceLocator,
+            builder: (_) => serviceLocator.isLoading
                 ? Center(
                     child: CircularProgressIndicator(),
                   )
                 : ShopItemListing(
-                    items: controller.items,
+                    items: serviceLocator.items,
                   ),
           ),
         ));

@@ -11,9 +11,4 @@ class StorageService {
     String? value = prefs.getString(key);
     return value;
   }
-
-  deleteItem(String key) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.remove(key);
-  }
 }
